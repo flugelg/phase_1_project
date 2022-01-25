@@ -47,18 +47,21 @@ input:focus {
   outline:none;
 }
 
-button {
-  padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
+#search {
   background: #ddd;
   font-size: 17px;
   border: none;
   cursor: pointer;
 }
 
-button:hover {
+#search:hover {
   background: #ccc;
+}
+
+#heart, #heart2 {
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 ul{
