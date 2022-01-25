@@ -5,26 +5,36 @@ async function sendRequest(api){
     fetch(api)
         .then(response => response.json())
         //.then(data => console.log(data))
-        .then(data => useAPIData(data))
+        .then(data => useAPIData(data.hits))
 }
 
 function useAPIData(data){
     const list = document.querySelector('#ingredients')
+    const list2 = document.querySelector('#ingredients2')
 
-    document.querySelector("#url").setAttribute("href", data.hits[0].recipe.url);
-    document.querySelector("#foodLabel").textContent = data.hits[0].recipe.label
+    document.querySelector("#url").setAttribute("href", data[0].recipe.url);
+    document.querySelector("#foodLabel").textContent = data[0].recipe.label
+    document.querySelector("#foodLabel2").textContent = data[1].recipe.label
     document.querySelector(".results").style.visibility = "visible"
-    document.querySelector("img").src = data.hits[0].recipe.image;
+    document.querySelector("#picture").src = data[0].recipe.image;
+    document.querySelector("#picture2").src = data[1].recipe.image;
 
-    const labelArray = data.hits[0].recipe.label.split(" ")
+    const labelArray = data[0].recipe.label.split(" ")
     for(let i = 0; i<labelArray.length; i++){
         console.log(labelArray[i])
     }
     list.innerHTML = '';
-    for(let i = 0; i<data.hits[0].recipe.ingredients.length; i++){
+    list2.innerHTML = '';
+    for(let i = 0; i<data[0].recipe.ingredients.length; i++){
         let li = document.createElement("li")
-        li.textContent = data.hits[0].recipe.ingredients[i].text
+        li.textContent = data[0].recipe.ingredients[i].text
         list.appendChild(li)
+    }
+
+    for(let i = 0; i<data[1].recipe.ingredients.length; i++){
+        let li = document.createElement("li")
+        li.textContent = data[1].recipe.ingredients[i].text
+        list2.appendChild(li)
     }
 
     console.log(data)

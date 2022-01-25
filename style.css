@@ -1,29 +1,32 @@
 body{
   margin: 0;
 }
+
 .container {
   text-align:center;
   width:60%;
   height:auto;
   padding-top:30px;
   margin:0 auto;
+  overflow: auto;
 }
+
 h1 { color: #111; 
   font-family: 'Helvetica Neue', sans-serif; 
   font-size: 1; 
   font-weight: bold; 
   letter-spacing: -1px; 
   line-height: 1; 
-  text-align: center; 
 }
+
 h2 { color: #111; 
   font-family: 'Helvetica Neue', sans-serif; 
   font-size: .5; 
   font-weight: bold; 
   letter-spacing: -1px; 
   line-height: 1; 
-  text-align: left; 
 }
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -65,10 +68,12 @@ ul{
 #ingredientsContainer{
   width: 50%;
   float: left;
+  overflow: auto;
 }
 #pictureContainer{
   width: 50%;
   float: right;
+  overflow: auto;
 }
 
 img{
@@ -78,4 +83,17 @@ img{
 
 .results{
   visibility: hidden;
+}
+
+#foodLabel{
+  font-size: auto;
+
+}
+
+#foodLabel2{
+  font-size: auto;
+}
+
+#labels {
+  overflow: hidden;
 }
