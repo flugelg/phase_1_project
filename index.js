@@ -11,13 +11,18 @@ async function sendRequest(api){
 function useAPIData(data){
     const list = document.querySelector('#ingredients')
     const list2 = document.querySelector('#ingredients2')
+    const labelLeft = document.querySelector("#foodLabel")
+    const labelRight = document.querySelector("#foodLabel2")
+    const imgLeft = document.querySelector("#picture")
+    const imgRight = document.querySelector("#picture2")
+
+    document.querySelector(".results").style.visibility = "visible"
 
     document.querySelector("#url").setAttribute("href", data[0].recipe.url);
-    document.querySelector("#foodLabel").textContent = data[0].recipe.label
-    document.querySelector("#foodLabel2").textContent = data[1].recipe.label
-    document.querySelector(".results").style.visibility = "visible"
-    document.querySelector("#picture").src = data[0].recipe.image;
-    document.querySelector("#picture2").src = data[1].recipe.image;
+    labelLeft.textContent = data[0].recipe.label
+    labelRight.textContent = data[1].recipe.label
+    imgLeft.src = data[0].recipe.image;
+    imgRight.src = data[1].recipe.image;
 
     const labelArray = data[0].recipe.label.split(" ")
     for(let i = 0; i<labelArray.length; i++){

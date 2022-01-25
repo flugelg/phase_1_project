@@ -87,13 +87,11 @@ img{
 
 #foodLabel{
   font-size: auto;
+  height: auto;
 
 }
 
 #foodLabel2{
   font-size: auto;
-}
-
-#labels {
-  overflow: hidden;
+  height: auto;
 }
