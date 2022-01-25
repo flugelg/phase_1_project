@@ -1,3 +1,81 @@
 body{
   margin: 0;
 }
+.container {
+  text-align:center;
+  width:60%;
+  height:auto;
+  padding-top:30px;
+  margin:0 auto;
+}
+h1 { color: #111; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-size: 1; 
+  font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1; 
+  text-align: center; 
+}
+h2 { color: #111; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-size: .5; 
+  font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1; 
+  text-align: left; 
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.buttons{
+  overflow: hidden;
+}
+
+input {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+input:focus {
+  outline:none;
+}
+
+button {
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ccc;
+}
+
+ul{
+  text-align:left;
+}
+
+#ingredientsContainer{
+  width: 50%;
+  float: left;
+}
+#pictureContainer{
+  width: 50%;
+  float: right;
+}
+
+img{
+  width: auto;
+  height: auto;
+}
+
+.results{
+  visibility: hidden;
+}
