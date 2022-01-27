@@ -10,18 +10,38 @@
 </head>
 <body>
     <div class="container">
+
       <div class = "buttons">
         <input id="food" type='text' placeholder="Search Food"></input><button id="search">Search</button>
       </div>
       <div class="results">
-        <div><!---
+        <div id="labelsContainer">
+          <h1 id="foodLabel"></h1><h1 id="foodLabel2"></h1>
+        </div>
+        <div id="pictureContainer">
+          <span id="imgSpan"><img src="" id="picture" alt=""></span><span id="img2Span"><img src="" id="picture2" alt=""></span>
+        </div>
+        <div id="ingredientsContainer">
+          <span id="ingredienctsSpan"><h2>Ingredients</h2><ul id="ingredients"></ul></span><span id="ingredienctsSpan2"><h2>Ingredients</h2><ul id="ingredients2"></ul></span>
+        </div>
+
+      </div>
+
+
+
+      <!--
+      <div class = "buttons">
+        <input id="food" type='text' placeholder="Search Food"></input><button id="search">Search</button>
+      </div>
+      <div class="results">
+        <div>
           <h1 id="foodLabel"></h1>
-          <a href="" id="url">Recipe Link</a>-->
+          <a href="" id="url">Recipe Link</a>
         </div>
         <div id="ingredientsContainer">
           <h1 id="foodLabel"></h1>
-          <button id='heart' >&#x2661;</button>
-          <a href="" id="url">Recipe Link</a>
+          <div><button id='heart' >♡</button></div>
+            <a href="" id="url">Recipe Link</a>
           <br>
           <img src="" id="picture" alt="">
           <h2>Ingredients</h2>
@@ -29,14 +49,14 @@
         </div>
         <div id="pictureContainer">
           <h1 id="foodLabel2"></h1>
-          <button id='heart2' >&#x2661;</button>
+          <button id='heart2' >♡</button>
           <br>
           <img src="" id="picture2" alt="">
           <h2>Ingredients</h2>
           <ul id="ingredients2"></ul>
-            <!-- <img src="" id="picture" alt=""> -->
+            <img src="" id="picture" alt=""> 
         </div>
-    </div>
+    </div>-->
     </div>
 </body>
 </html>

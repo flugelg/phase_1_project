@@ -5,19 +5,10 @@ body{
 .container {
   text-align:center;
   width:60%;
-  height:auto;
-  padding-top:30px;
+  height:100%;
   margin:0 auto;
-  overflow: auto;
 }
 
-h1 { color: #111; 
-  font-family: 'Helvetica Neue', sans-serif; 
-  font-size: 1; 
-  font-weight: bold; 
-  letter-spacing: -1px; 
-  line-height: 1; 
-}
 
 h2 { color: #111; 
   font-family: 'Helvetica Neue', sans-serif; 
@@ -27,11 +18,6 @@ h2 { color: #111;
   line-height: 1; 
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 .buttons{
   overflow: hidden;
 }
@@ -62,21 +48,11 @@ input:focus {
   background: transparent;
   border: none;
   cursor: pointer;
+  color: red;
 }
 
 ul{
   text-align:left;
-}
-
-#ingredientsContainer{
-  width: 50%;
-  float: left;
-  overflow: auto;
-}
-#pictureContainer{
-  width: 50%;
-  float: right;
-  overflow: auto;
 }
 
 img{
@@ -88,13 +64,62 @@ img{
   visibility: hidden;
 }
 
-#foodLabel{
-  font-size: auto;
-  height: auto;
+#labelsContainer {
+  display: block;
+  width: 100%;
+  padding-bottom: 20px;
+}
 
+#foodLabel{
+  
+  width: 50%;
+  vertical-align: top;
+  display: inline-block;
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1; 
 }
 
 #foodLabel2{
-  font-size: auto;
-  height: auto;
+  width: 50%;
+  vertical-align: top;
+  display: inline-block;
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1; 
+}
+
+#imgSpan{
+  width: 50%;
+  min-width: 50%;
+}
+
+#imgSpan2{
+  width: 50%;
+  min-width: 50%;
+}
+
+#picture, #picture2 {
+  width: 50%;
+}
+
+#ingredientsContainer {
+  width: 100%;
+  height: 200px;
+}
+
+#ingredienctsSpan {
+  height: 100%;
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#ingredienctsSpan2 {
+  height: 100%;
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
 }
