@@ -6,7 +6,6 @@ const FULL_HEART = '♥'
 async function sendRequest(api){
     fetch(api)
         .then(response => response.json())
-        //.then(data => console.log(data))
         .then(data => useAPIData(data.hits))
 }
 
@@ -18,21 +17,20 @@ function useAPIData(data){
     const imgLeft = document.querySelector("#picture")
     const imgRight = document.querySelector("#picture2")
 
-    document.querySelector(".results").style.visibility = "visible"
+    document.querySelector(".results").style.visibility = "visible" //changing results to visible
 
-    //document.querySelector("#url").setAttribute("href", data[0].recipe.url);
-    labelLeft.textContent = data[0].recipe.label
+    labelLeft.textContent = data[0].recipe.label //setting variables to data
     labelRight.textContent = data[1].recipe.label
     imgLeft.src = data[0].recipe.image;
     imgRight.src = data[1].recipe.image;
+    list.innerHTML = ''; //Emptying ingredient lists
+    list2.innerHTML = '';
 
     const labelArray = data[0].recipe.label.split(" ")
     for(let i = 0; i<labelArray.length; i++){
         console.log(labelArray[i])
     }
     
-    list.innerHTML = '';
-    list2.innerHTML = '';
     for(let i = 0; i<data[0].recipe.ingredients.length; i++){
         let li = document.createElement("li")
         li.textContent = data[0].recipe.ingredients[i].text
