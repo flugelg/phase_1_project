@@ -11,6 +11,8 @@ function useAPIData(data){
     const labelRight = document.querySelector("#foodLabel2")
     const imgLeft = document.querySelector("#picture")
     const imgRight = document.querySelector("#picture2")
+    const favorite = document.querySelector("#addToFavorites")
+    const favorite2 = document.querySelector("#addToFavorites2")
 
     document.querySelector(".results").style.visibility = "visible" //making results visible
 
@@ -33,14 +35,17 @@ function useAPIData(data){
         list2.appendChild(li)
     }
 
-    console.log(data) //show recipes in console
-/*
-    const glyph = document.querySelector("#heart")
-    //const glyph2 = document.querySelector("#heart2")
-    glyph.addEventListener('click', function(){
-        console.log("1")
+    favorite.addEventListener('click', function(){ //sending favorited food
+        const favoritedFood1 = data[0].recipe;
+        favoriteFoods(favoritedFood1);
     })
-    */
+    favorite2.addEventListener('click', function(){
+        const favoritedFood2 = data[1].recipe;
+        favoriteFoods(favoritedFood2);
+    })
+
+    console.log(data) //show recipes in console
+    
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -57,3 +62,17 @@ document.addEventListener("DOMContentLoaded", () => {
         sendRequest(api);
     })
   });
+
+//saving favorites to json server
+function favoriteFoods(favorited){
+    fetch("http://localhost:3000/favorites", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        body: JSON.stringify(favorited)
+    })
+    .then(res =>res.json())
+    .then(food => console.log(food))
+}
