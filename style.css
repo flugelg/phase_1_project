@@ -67,6 +67,24 @@ input:focus {
   line-height: 1; 
 }
 
+#addToFavorites, #addToFavorites2{ 
+  width: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid #222222;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Helvetica Neue', sans-serif; 
+  outline: none;
+  padding: 5px 5px;
+}
+
+#addToFavorites:hover, #addToFavorites2:hover {
+  background: #ccc;
+}
+
 #imgSpan, #imgSpan2{
   width: 50%;
   min-width: 50%;
