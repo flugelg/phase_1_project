@@ -1,8 +1,3 @@
-const APP_ID = "80633b55";
-const API_KEY = "43b0ca757ed3a995c4e1e7e237192e39"
-const EMPTY_HEART = '♡'
-const FULL_HEART = '♥'
-
 async function sendRequest(api){
     fetch(api)
         .then(response => response.json())
