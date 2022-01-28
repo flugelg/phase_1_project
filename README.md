@@ -4,5 +4,5 @@ FoodLette is a webpage that will give you 2 random recipes containing the food y
 
 # How To Use
 
-1. Input foor you wish to search in search bar.
-2. Hit enter or click search.
+Input foor you wish to search in search bar.
+Hit enter or click search.
