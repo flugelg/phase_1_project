@@ -26,19 +26,19 @@ function useAPIData(data){
     list.innerHTML = ''; //Emptying ingredient lists
     list2.innerHTML = '';
 
-    for(let i = 0; i<data[0].recipe.ingredients.length; i++){
+    for(let i = 0; i<data[0].recipe.ingredients.length; i++){ //adding ingredients for recipe 1
         let li = document.createElement("li")
         li.textContent = data[0].recipe.ingredients[i].text
         list.appendChild(li)
     }
 
-    for(let i = 0; i<data[1].recipe.ingredients.length; i++){
+    for(let i = 0; i<data[1].recipe.ingredients.length; i++){ //adding ingredients for recipe 2
         let li = document.createElement("li")
         li.textContent = data[1].recipe.ingredients[i].text
         list2.appendChild(li)
     }
 
-    console.log(data)
+    console.log(data) //show recipes in console
 /*
     const glyph = document.querySelector("#heart")
     //const glyph2 = document.querySelector("#heart2")
@@ -51,16 +51,14 @@ function useAPIData(data){
 document.addEventListener("DOMContentLoaded", () => {
     let input = document.querySelector("#food")
     input.addEventListener("keyup", function(event) {
-        if (event.keyCode === 13) {
+        if (event.keyCode === 13) { //So you can use enter instead of clicking search
          event.preventDefault();
          document.querySelector("#search").click();
         }
     });
     document.querySelector("#search").addEventListener('click', function(e){
-        let stuff = document.querySelector("#food").value
-        let api = `https://api.edamam.com/api/recipes/v2?type=public&q="${stuff}"&app_id=80633b55&app_key=43b0ca757ed3a995c4e1e7e237192e39&random=true`
-        console.log(stuff)
-        console.log(api)
+        let foodSelection = document.querySelector("#food").value
+        let api = `https://api.edamam.com/api/recipes/v2?type=public&q="${foodSelection}"&app_id=80633b55&app_key=43b0ca757ed3a995c4e1e7e237192e39&random=true`
         sendRequest(api);
     })
   });
