@@ -9,6 +9,10 @@ body{
   margin:0 auto;
 }
 
+#logo {
+  width: 300px;
+}
+
 h2 { color: #111; 
   font-family: 'Helvetica Neue', sans-serif; 
   font-size: .5; 
