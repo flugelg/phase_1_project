@@ -1,3 +1,5 @@
+APP_KEY = ""
+
 async function sendRequest(api){
     fetch(api)
         .then(response => response.json())
@@ -5,14 +7,14 @@ async function sendRequest(api){
 }
 
 function useAPIData(data){
-    const list = document.querySelector('#ingredients')
-    const list2 = document.querySelector('#ingredients2')
-    const labelLeft = document.querySelector("#foodLabel")
-    const labelRight = document.querySelector("#foodLabel2")
-    const imgLeft = document.querySelector("#picture")
-    const imgRight = document.querySelector("#picture2")
-    const favorite = document.querySelector("#addToFavorites")
-    const favorite2 = document.querySelector("#addToFavorites2")
+    let list = document.querySelector('#ingredients')
+    let list2 = document.querySelector('#ingredients2')
+    let labelLeft = document.querySelector("#foodLabel")
+    let labelRight = document.querySelector("#foodLabel2")
+    let imgLeft = document.querySelector("#picture")
+    let imgRight = document.querySelector("#picture2")
+    let favorite = document.querySelector("#addToFavorites")
+    let favorite2 = document.querySelector("#addToFavorites2")
 
     document.querySelector(".results").style.visibility = "visible" //making results visible
 
@@ -36,11 +38,12 @@ function useAPIData(data){
     }
 
     favorite.addEventListener('click', function(){ //sending favorited food
-        const favoritedFood1 = data[0].recipe;
-        favoriteFoods(favoritedFood1);
+        let favoritedFood1 = data[0].recipe;
+        console.log("F1")
+        //favoriteFoods(favoritedFood1);
     })
     favorite2.addEventListener('click', function(){
-        const favoritedFood2 = data[1].recipe;
+        let favoritedFood2 = data[1].recipe;
         favoriteFoods(favoritedFood2);
     })
 
@@ -50,20 +53,22 @@ function useAPIData(data){
 
 document.addEventListener("DOMContentLoaded", () => {
     let input = document.querySelector("#food")
-    input.addEventListener("keyup", function(event) {
-        if (event.keyCode === 13) { //So you can use enter instead of clicking search
+    input.addEventListener("keyup", function(event) { //So you can use enter instead of clicking search
+        if (event.keyCode === 13) {
          event.preventDefault();
          document.querySelector("#search").click();
         }
     });
-    document.querySelector("#search").addEventListener('click', function(e){
+    document.querySelector("#search").addEventListener('click', function(){
+        let api;
         let foodSelection = document.querySelector("#food").value
-        let api = `https://api.edamam.com/api/recipes/v2?type=public&q="${foodSelection}"&app_id=80633b55&app_key=43b0ca757ed3a995c4e1e7e237192e39&random=true`
+        api = `https://api.edamam.com/api/recipes/v2?type=public&q="${foodSelection}"&app_id=80633b55&app_key=${APP_KEY}&random=true`
         sendRequest(api);
     })
   });
 
 //saving favorites to json server
+/*
 function favoriteFoods(favorited){
     fetch("http://localhost:3000/favorites", {
         method: "POST",
@@ -75,4 +80,9 @@ function favoriteFoods(favorited){
     })
     .then(res =>res.json())
     .then(food => console.log(food))
+}
+*/
+
+function favoriteFoods(favorited){
+    console.log(favorited)
 }
