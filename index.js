@@ -60,10 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     document.querySelector("#search").addEventListener('click', function(){
-        let api;
-        let foodSelection = document.querySelector("#food").value
-        api = `https://api.edamam.com/api/recipes/v2?type=public&q="${foodSelection}"&app_id=80633b55&app_key=${APP_KEY}&random=true`
-        sendRequest(api);
+        let foodSelection = document.querySelector("#food").value;
+        let vegan = document.querySelector("#vegan");
+        if(vegan.checked === true){
+            let apiVegan = `https://api.edamam.com/api/recipes/v2?type=public&q=${foodSelection}&app_id=80633b55&app_key=${APP_KEY}&health=vegan&random=true`
+            sendRequest(apiVegan);
+            console.log("vegan")
+        }
+        else{
+            let api = `https://api.edamam.com/api/recipes/v2?type=public&q="${foodSelection}"&app_id=80633b55&app_key=${APP_KEY}&random=true`
+            sendRequest(api);
+            console.log("not Vegan")
+        }
     })
   });
 
