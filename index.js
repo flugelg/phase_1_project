@@ -6,8 +6,19 @@ const init = () => {
     inputForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const input = document.querySelector('#searchFood').value;
+        let vegan = document.querySelector("#vegan");
+        let api;
 
-        fetch(`https://api.edamam.com/api/recipes/v2?type=public&q="${input}"&app_id=80633b55&app_key=${APP_KEY}&random=true`)
+        if(vegan.checked === true){
+            api = `https://api.edamam.com/api/recipes/v2?type=public&q=${input}&app_id=80633b55&app_key=${APP_KEY}&health=vegan&random=true`
+            console.log("vegan")
+        }
+        else{
+            api = `https://api.edamam.com/api/recipes/v2?type=public&q="${input}"&app_id=80633b55&app_key=${APP_KEY}&random=true`
+            console.log("not Vegan")
+        }
+
+        fetch(api)
         .then(response => response.json())
         .then(data => useAPIData(data.hits))
     });
