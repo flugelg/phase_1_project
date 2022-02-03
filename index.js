@@ -39,6 +39,7 @@ function useAPIData(data) {
         li.textContent = ingr.text;
         ingredientsRight.appendChild(li);
     })
+    console.log(data)
 }
 
 function favorited(){
