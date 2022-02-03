@@ -1,96 +1,61 @@
-APP_KEY = ""
+const APP_KEY = '43b0ca757ed3a995c4e1e7e237192e39'
 
-async function sendRequest(api){
-    fetch(api)
+const init = () => {
+    const inputForm = document.querySelector('form');
+
+    inputForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.querySelector('#searchFood').value;
+
+        fetch(`https://api.edamam.com/api/recipes/v2?type=public&q="${input}"&app_id=80633b55&app_key=${APP_KEY}&random=true`)
         .then(response => response.json())
         .then(data => useAPIData(data.hits))
-}
-
-function useAPIData(data){
-    let list = document.querySelector('#ingredients')
-    let list2 = document.querySelector('#ingredients2')
-    let labelLeft = document.querySelector("#foodLabel")
-    let labelRight = document.querySelector("#foodLabel2")
-    let imgLeft = document.querySelector("#picture")
-    let imgRight = document.querySelector("#picture2")
-    let favorite = document.querySelector("#addToFavorites")
-    let favorite2 = document.querySelector("#addToFavorites2")
-
-    document.querySelector(".results").style.visibility = "visible" //making results visible
-
-    labelLeft.textContent = data[0].recipe.label //setting variables to data
-    labelRight.textContent = data[1].recipe.label
-    imgLeft.src = data[0].recipe.image;
-    imgRight.src = data[1].recipe.image;
-    list.innerHTML = ''; //Emptying ingredient lists
-    list2.innerHTML = '';
-
-    for(let i = 0; i<data[0].recipe.ingredients.length; i++){ //adding ingredients for recipe 1
-        let li = document.createElement("li")
-        li.textContent = data[0].recipe.ingredients[i].text
-        list.appendChild(li)
-    }
-
-    for(let i = 0; i<data[1].recipe.ingredients.length; i++){ //adding ingredients for recipe 2
-        let li = document.createElement("li")
-        li.textContent = data[1].recipe.ingredients[i].text
-        list2.appendChild(li)
-    }
-
-    favorite.addEventListener('click', function(){ //sending favorited food
-        let favoritedFood1 = data[0].recipe;
-        console.log("F1")
-        //favoriteFoods(favoritedFood1);
-    })
-    favorite2.addEventListener('click', function(){
-        let favoritedFood2 = data[1].recipe;
-        favoriteFoods(favoritedFood2);
-    })
-
-    console.log(data) //show recipes in console
-    
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    let input = document.querySelector("#food")
-    input.addEventListener("keyup", function(event) { //So you can use enter instead of clicking search
-        if (event.keyCode === 13) {
-         event.preventDefault();
-         document.querySelector("#search").click();
-        }
     });
-    document.querySelector("#search").addEventListener('click', function(){
-        let foodSelection = document.querySelector("#food").value;
-        let vegan = document.querySelector("#vegan");
-        if(vegan.checked === true){
-            let apiVegan = `https://api.edamam.com/api/recipes/v2?type=public&q=${foodSelection}&app_id=80633b55&app_key=${APP_KEY}&health=vegan&random=true`
-            sendRequest(apiVegan);
-            console.log("vegan")
-        }
-        else{
-            let api = `https://api.edamam.com/api/recipes/v2?type=public&q="${foodSelection}"&app_id=80633b55&app_key=${APP_KEY}&random=true`
-            sendRequest(api);
-            console.log("not Vegan")
-        }
-    })
-  });
 
-//saving favorites to json server
-/*
-function favoriteFoods(favorited){
-    fetch("http://localhost:3000/favorites", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-        },
-        body: JSON.stringify(favorited)
-    })
-    .then(res =>res.json())
-    .then(food => console.log(food))
+    favorited();
 }
-*/
 
-function favoriteFoods(favorited){
-    console.log(favorited)
+function useAPIData(data) {
+    let ingredientsLeft = document.querySelector('#ingredientsLeft');
+    let ingredientsArray = data[0].recipe.ingredients;
+    let ingredientsArrayRight = data[1].recipe.ingredients;
+
+    document.querySelector(".results").style.visibility = "visible"; //make results visible
+    document.querySelector('#foodLabel1').textContent = data[0].recipe.label;
+    document.querySelector("#pictureLeft").src = data[0].recipe.image;
+    document.querySelector('#foodLabel2').textContent = data[1].recipe.label;
+    document.querySelector("#pictureRight").src = data[1].recipe.image;
+
+    ingredientsLeft.innerHTML = ''; //clearing unordered list of ingredients
+    ingredientsRight.innerHTML = '';
+    ingredientsArray.forEach((ingr) =>{ //iterate array for left ingredients
+        let li = document.createElement("li");
+        li.textContent = ingr.text;
+        ingredientsLeft.appendChild(li);
+    })
+
+    ingredientsArrayRight.forEach((ingr) =>{ //iterate array for right ingredients
+        let li = document.createElement("li");
+        li.textContent = ingr.text;
+        ingredientsRight.appendChild(li);
+    })
 }
+
+function favorited(){
+    document.querySelector('#favorite').addEventListener('click', function(){
+        console.log(document.querySelector('#foodLabel1').textContent);
+        let favorited1 = document.querySelector('#foodLabel1').textContent;
+        favoriteFoods(favorited1)
+    })
+    document.querySelector('#favorite2').addEventListener('click', function(){
+        console.log(document.querySelector('#foodLabel2').textContent);
+        let favorited2 = document.querySelector('#foodLabel2').textContent;
+        favoriteFoods(favorited2)
+    })
+}
+
+function favoriteFoods(data){
+    JSON.stringify(data)
+}
+
+document.addEventListener("DOMContentLoaded", init)
