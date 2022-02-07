@@ -56,18 +56,27 @@ function useAPIData(data) {
 function favorited(){
     document.querySelector('#favorite').addEventListener('click', function(){
         console.log(document.querySelector('#foodLabel1').textContent);
-        let favorited1 = document.querySelector('#foodLabel1').textContent;
-        favoriteFoods(favorited1)
+        let favorited1 = [document.querySelector('#foodLabel1').textContent];
+        favoriteFoods(favorited1);
     })
     document.querySelector('#favorite2').addEventListener('click', function(){
         console.log(document.querySelector('#foodLabel2').textContent);
-        let favorited2 = document.querySelector('#foodLabel2').textContent;
-        favoriteFoods(favorited2)
+        let favorited2 = [document.querySelector('#foodLabel2').textContent];
+        favoriteFoods(favorited2);
     })
 }
 
-function favoriteFoods(data){
-    JSON.stringify(data)
+function favoriteFoods(favorited){
+    fetch("http://localhost:3000/favorites", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        body: JSON.stringify(favorited)
+    })
+    .then(res =>res.json())
+    .then(food => console.log(food))
 }
 
 document.addEventListener("DOMContentLoaded", init)
