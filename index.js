@@ -1,4 +1,4 @@
-const APP_KEY = '43b0ca757ed3a995c4e1e7e237192e39'
+const APP_KEY = ''
 
 const init = () => {
     const inputForm = document.querySelector('form');
