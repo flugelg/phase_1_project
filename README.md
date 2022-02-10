@@ -2,6 +2,14 @@
 
 FoodLette is a webpage that will give you 2 random recipes containing the food your search.
 
+## Prerequisites
+
+To use FoodLette you must have an app key for the Adamam recipe search API.
+
+## How To Get APP_KEY
+
+Visit https://www.edamam.com/, create an account and signup for the recipe search API.
+
 ## How To Use
 
 1. Input foor you wish to search in search bar.
