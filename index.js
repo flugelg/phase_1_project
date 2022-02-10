@@ -1,4 +1,4 @@
-const APP_KEY = ''
+const APP_KEY = '43b0ca757ed3a995c4e1e7e237192e39'
 
 const init = () => {
     const inputForm = document.querySelector('form');
@@ -32,10 +32,10 @@ function useAPIData(data) {
     let ingredientsArrayRight = data[1].recipe.ingredients;
 
     document.querySelector(".results").style.visibility = "visible"; //make results visible
-    document.querySelector('#foodLabel1').textContent = data[0].recipe.label;
-    document.querySelector("#pictureLeft").src = data[0].recipe.image;
-    document.querySelector('#foodLabel2').textContent = data[1].recipe.label;
-    document.querySelector("#pictureRight").src = data[1].recipe.image;
+    document.querySelector('#foodLabel1').textContent = data[0].recipe.label; //display left foods label
+    document.querySelector("#pictureLeft").src = data[0].recipe.image; //display left foods image
+    document.querySelector('#foodLabel2').textContent = data[1].recipe.label;//display right foods label
+    document.querySelector("#pictureRight").src = data[1].recipe.image;//display right foods image
 
     ingredientsLeft.innerHTML = ''; //clearing unordered list of ingredients
     ingredientsRight.innerHTML = '';
