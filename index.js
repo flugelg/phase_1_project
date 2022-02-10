@@ -1,4 +1,4 @@
-const APP_KEY = '43b0ca757ed3a995c4e1e7e237192e39'
+const APP_KEY = ''
 
 const init = () => {
     const inputForm = document.querySelector('form');
@@ -28,6 +28,7 @@ const init = () => {
 
 function useAPIData(data) {
     let ingredientsLeft = document.querySelector('#ingredientsLeft');
+    let ingredientsRight = document.querySelector('#ingredientsRight');
     let ingredientsArray = data[0].recipe.ingredients;
     let ingredientsArrayRight = data[1].recipe.ingredients;
 
